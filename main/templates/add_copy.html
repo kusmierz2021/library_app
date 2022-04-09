@@ -1,0 +1,33 @@
+{% extends 'master_admin.html' %}
+{% load static %}
+
+
+{% block mainblock %}
+<div class="table-wrapper">
+    <form method="post" action="{% url 'add_copy' %}">
+        <label>Wybierz ksiazke</label>
+        <select name="book" id="book">
+            <option value=''></option>
+            {%  for book in list_of_books %}
+                <option value="{{book}}">{{book}}</option>
+            {% endfor %}
+        </select>
+        <label>Ile</label>
+        <select name="quantity" id="quantity">
+            <option value=''></option>
+            {%  for q in list_of_quantity %}
+                <option value="{{q}}">{{q}}</option>
+            {% endfor %}
+        </select>
+        <label>Lokalizacja(id,nr alejki,nr polki, pozycja na polce)</label>
+        <select name="localization" id="localization">
+            <option value=''></option>
+            {%  for loc in list_of_localizations %}
+                <option value="{{loc}}">{{loc}}</option>
+            {% endfor %}
+        </select>
+        {% csrf_token %}
+        <button class="btn mt-3">Add copy</button>
+    </form>
+</div>
+{% endblock %}

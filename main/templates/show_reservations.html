@@ -1,0 +1,42 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+
+
+{% block mainblock %}
+
+<link rel="stylesheet" href="{%static 'show_list.css' %}">
+<div class="table-wrapper">
+<h2>rezerwacje</h2>
+<table class="fl-table">
+    <thead>
+    <tr>
+        <th>id egzemplarza</th>
+        <th>czas rezerwacji</th>
+        <th>id klienta</th>
+        <th>akcja</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for reservation in reservations %}
+    <tr>
+        <td>{{reservation.copy_id}}</td>
+        <td>{{reservation.date_valid}}</td>
+        <td>{{reservation.client_id}}</td>
+        <td>
+            <form action="{%url 'remove_reservation' %}" method="post">
+                {% csrf_token %}
+             
+                <button class="submit" name="copy_id" value="{{reservation.copy_id}}">usuń rezerwacje</button>
+            </form>
+        </td>
+    </tr>    
+    {% endfor %}
+    <tbody>
+</table>
+</div>
+
+
+{% endblock %}

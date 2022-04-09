@@ -1,0 +1,38 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+{% block mainblock %}
+
+<link rel="stylesheet" href="{%static 'show_list.css' %}">
+
+
+<div class="table-wrapper">
+    <h2>ksiazki</h2>
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>ksiazka_id</th>
+            <th>tytul</th>
+            <th>isbn</th>
+            <th>jezyk_id</th>
+            <th>wydawca_id</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in list_of_books %}
+        <tr>
+            <td>{{book.ksiazka_id}}</td>
+            <td>{{book.tytul}}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.jezyk_id}}</td>
+            <td>{{book.wydawca_id}}</td>
+        </tr>    
+        {% endfor %}
+        <tbody>
+    </table>
+    
+</div>
+
+{% endblock %}

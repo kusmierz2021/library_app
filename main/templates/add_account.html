@@ -1,0 +1,57 @@
+{% extends 'master_admin.html' %}
+{% load static %}
+
+
+     {% block mainblock %}
+
+
+
+
+<div class="wrapper">
+    <div class="text-center mt-4 name"> account </div>
+    <form action="{%url 'add_account' %}" method="post" class="p-3 mt-3">
+        {% csrf_token %}
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="text" name="login" id="login" placeholder="login x@y">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="password" name="haslo" id="haslo" placeholder="haslo">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="text" name="imie" id="imie" placeholder="imie">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="text" name="nazwisko" id="nazwisko" placeholder="nazwisko">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="email" name="email" id="email" placeholder="email">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="number" name="numer_telefonu" id="numer_telefonu" placeholder="numer_telefonu">
+        </div>
+        <div class="switch-holder">
+            <div class="switch-label">
+                <i class="fa fa-wifi"></i><span>is admin</span>
+            </div>
+            <div class="switch-toggle">
+                <input type="checkbox" id="is_admin" name="is_admin">
+                <label for="is_admin"></label>
+            </div>
+        </div>
+
+        
+
+
+
+        <button class="btn mt-3">add</button>
+    </form>
+</div>
+
+
+ {% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+{% block mainblock %}
+
+<link rel="stylesheet" href="{%static 'login.css' %}">
+<link rel="stylesheet" href="{%static 'show_list.css' %}">
+
+<div class="table-wrapper">
+    <form method="post" action="{% url 'show_statistics' %}">
+        <label>Wybierz statystyke</label>
+        <select name="statistic" id="statistic">
+            <option value=''></option>
+            {%  for stat in list_of_statistics %}
+                <option value={{stat}}>{{stat}}</option>
+            {% endfor %}
+        </select>
+        <label>Liczba dni</label>
+        <select name="last_ndays" id="last_ndays">
+            <option value=''></option>
+            {% for range in list_of_date_ranges %}
+                <option value={{range}}>{{range}}</option>
+            {% endfor %}
+        </select>
+        {% csrf_token %}
+        <button class="btn mt-3">Pokaz wykres</button>
+    </form>
+    <div>
+        {% if chart %}
+            <img src="data:image/png;base64, {{chart|safe}}">
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

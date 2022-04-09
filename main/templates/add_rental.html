@@ -1,0 +1,58 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+
+
+{% block mainblock %}
+
+<link rel="stylesheet" href="{%static 'show_list.css' %}">
+<div class="table-wrapper">
+<h2>rent or reserve book</h2>
+<!-- 
+potrzebne pola:
+- klient_klient_id
+- egzemplarz_egzemplarz_id
+- <opcjonalnie> na jaki okres czasu - domyślnie 1 miesiąc
+ -->
+<form method="post" action="{% url 'rent_book' %}">
+<label for="user">rent to</label>
+<select name="user" id="user">
+    {% for user_id, user_name in list_of_users %}
+    <option value={{user_id}}>{{user_name}}</option>
+    {% endfor %}
+</select>
+<br />
+<label for="copy">book to rent</label>
+<select name="copy" id="copy">
+    {% for copy_id, copy_description in list_of_books %}
+    <option value={{copy_id}}>{{copy_description}}</option>
+    {% endfor %}
+</select>
+{% csrf_token %}
+<button class="submit">rent</button>
+</form>
+
+<br />
+<form method="post" action="{% url 'reserve_book' %}">
+    <label for="user">reserve to</label>
+    <select name="user" id="user">
+        {% for user_id, user_name in list_of_users %}
+        <option value={{user_id}}>{{user_name}}</option>
+        {% endfor %}
+    </select>
+    <br />
+    <label for="book">book to rent</label>
+    <select name="copy" id="copy">
+        {% for copy_id, copy_description in list_of_books %}
+        <option value={{copy_id}}>{{copy_description}}</option>
+        {% endfor %}
+    </select>
+    {% csrf_token %}
+    <button class="submit">reserve</button>
+    </form>
+</div>
+
+
+{% endblock %}

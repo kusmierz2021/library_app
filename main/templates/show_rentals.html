@@ -1,0 +1,60 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+
+
+{% block mainblock %}
+
+<link rel="stylesheet" href="{%static 'show_list.css' %}">
+<div class="table-wrapper">
+<h2>wypożyczenia</h2>
+<table class="fl-table">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>data wypożyczenia</th>
+        <th>termin oddania</th>
+        <th>pracownik</th>
+        <th>klient</th>
+        <th>egzemplarz</th>
+        <th>zwrot</th>
+        <th>przedłużenie</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for rental in list_of_rentals %}
+    <tr>
+            <td>{{rental.rental_id}}</td>
+            <td>{{rental.date_rented}}</td>
+            <td>{{rental.date_returned}}</td>
+            <td>{{rental.employee_id}}</td>
+            <td>{{rental.client_id}}</td>
+            <td>{{rental.copy_id}}</td>
+            
+            <td>
+            <form action="{%url 'return_book' %}" method="post">
+                {% csrf_token %}
+             
+                <button class="submit" name="rental_id" value="{{rental.rental_id}}">zwróć</button>
+            </form>
+            </td>
+            
+
+            <td>
+            <form action="{%url 'extend_book_rental' %}" method="post">
+                {% csrf_token %}
+                <button class="submit" name="rental_id" value="{{rental.rental_id}}">przedłuż</button>
+            </form>
+            </td>
+            
+        
+    </tr>    
+    {% endfor %}
+    <tbody>
+</table>
+</div>
+
+
+{% endblock %}

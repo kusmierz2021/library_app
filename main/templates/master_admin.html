@@ -1,0 +1,114 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{%static 'toggle.css' %}">
+    <link rel="stylesheet" href="{%static 'menu.css' %}">
+    <link rel="stylesheet" href="{%static 'login.css' %}">
+</head>
+<body>
+
+
+<div class='dashboard'>
+    <div class="dashboard-nav">
+        <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#"
+                                                                                   class="brand-logo"><i
+                class="fas fa-anchor">library</i> <span>login</span></a></header>
+        <nav class="dashboard-nav-list">
+            <div class="nav-item-divider"></div>
+            <form method="post" action="{% url 'show_rentals' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> show rentals </button></a>
+            </form>
+            <form method="post" action="{% url 'show_reservations' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> show reservations </button></a>
+            </form>
+            <form method="post" action="{% url 'add_rental' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> rent book </button></a>
+            </form>
+            <div class="nav-item-divider"></div>
+            <form method="post" action="{% url 'add_book' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> add book </button></a>
+            </form>
+            <form method="post" action="{% url 'delete_book' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> delete book </button></a>
+            </form>
+            <form method="post" action="{% url 'show_books' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> show books </button></a>
+            </form>
+            <div class="nav-item-divider"></div>
+            <form method="post" action="{% url 'search_copy' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> search copy </button></a>
+            </form>
+            <div class="nav-item-divider"></div>
+            <form method="post" action="{% url 'add_autor' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> add autor </button></a>
+            </form>
+            <form method="post" action="{% url 'delete_autor' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> delete autor </button></a>
+            </form>
+            <form method="post" action="{% url 'show_autors' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> show autors </button></a>
+            </form>
+            <div class="nav-item-divider"></div>
+            <form method="post" action="{% url 'add_account' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> add account </button></a>
+            </form>
+            <form method="post" action="{% url 'delete_account' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> delete account </button></a>
+            </form>
+            <form method="post" action="{% url 'show_accounts' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> show accounts </button></a>
+            </form>
+            <div class="nav-item-divider"></div>
+            <form method="post" action="{% url 'show_statistics' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> show statistics </button></a>
+            </form>
+            <form method="post" action="{% url 'add_copy' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> add_copy </button></a>
+            </form>
+
+
+          <div class="nav-item-divider"></div>
+            <form method="post" action="{% url 'log' %}">
+                {% csrf_token %}
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i><button class="button-1" type='submit'> logout </button></a>
+            </form>
+
+        </nav>
+    </div>
+    <div class='dashboard-app'>
+
+        <div class='dashboard-content'>
+            <div class='container'>
+
+                {% block mainblock %}
+                {% endblock %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+
+</html>

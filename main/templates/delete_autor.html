@@ -1,0 +1,23 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+{% block mainblock %}
+<div class="wrapper">
+    <div class="text-center mt-4 name"> autor </div>
+    <form action="{%url 'delete_autor' %}" method="post" class="p-3 mt-3">
+        {% csrf_token %}
+
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="number" name="autor_id" id="autor_id" placeholder="autor_id">
+        </div>
+
+
+        <button class="btn mt-3">delete</button>
+    </form>
+</div>
+
+
+{% endblock %}

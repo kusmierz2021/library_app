@@ -1,0 +1,21 @@
+{% extends 'master_admin.html' %}
+{% load static %}
+
+
+     {% block mainblock %}
+<div class="wrapper">
+    <div class="text-center mt-4 name"> account </div>
+    <form action="{%url 'delete_account' %}" method="post" class="p-3 mt-3">
+        {% csrf_token %}
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="number" name="konto_id" id="konto_id" placeholder="konto_id">
+        </div>
+
+
+        <button class="btn mt-3">delete</button>
+    </form>
+</div>
+
+
+ {% endblock %}

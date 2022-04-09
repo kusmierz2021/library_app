@@ -1,0 +1,41 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+{% block mainblock %}
+<div class="wrapper">
+<div class="text-center mt-4 name"> book </div>
+    <form action="{%url 'add_book' %}" method="post" class="p-3 mt-3">
+        {% csrf_token %}
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="text" name="tytul" id="tytul" placeholder="tytul">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="number" name="isbn" id="isbn" placeholder="isbn">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="number" name="jezyk_jezyk_id" id="jezyk_jezyk_id" placeholder="jezyk_jezyk_id">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="number" name="wydawca_wydawca_id" id="wydawca_wydawca_id" placeholder="wydawca_wydawca_id">
+        </div>
+        <div>
+            <label for="autor_id">wybierz autora</label>
+        <select name="autor_id" id="autor_id">
+            {% for autor in list_of_autors %}
+            <option value={{autor.autor_id}}>{{autor.imie}} {{autor.nazwisko}}</option>
+            {% endfor %} -->
+        </select>
+        </div>
+
+        <button class="btn mt-3">add</button>
+    </form>
+</div>
+
+
+{% endblock %}

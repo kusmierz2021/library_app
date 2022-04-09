@@ -1,0 +1,137 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+{% block mainblock %}
+
+<link rel="stylesheet" href="{%static 'login.css' %}">
+<link rel="stylesheet" href="{%static 'show_list.css' %}">
+
+
+<div style="height: 250px; width: 1000px; margin-right: 350px;">
+    <div class="table-wrapper" style="width: 1250px;">
+        <h2>Filtry</h2>
+        <form method="post" action="{% url 'search_copy' %}" style="text-align: center;">
+            <label for="language">wybierz język</label>
+            <select name="language" id="language">
+                <option value=''></option>
+                {% for language in list_of_languages %}
+                <option value={{language}}>{{language}}</option>
+                {% endfor %} -->
+            </select>
+            <br />
+            <label for="publisher">wybierz wydawcę</label>
+            <select name="publisher" id="publisher">
+                <option value=''></option>
+                {% for publisher in list_of_publishers %}
+                <option value={{publisher}}>{{publisher}}</option>
+                {% endfor %} -->
+            </select>
+            <br />
+            <label for="category">wybierz kategorię</label>
+            <select name="category" id="category">
+                <option value=''></option>
+                {% for category in list_of_categories %}
+                <option value={{category}}>{{category}}</option>
+                {% endfor %} -->
+            </select>
+            <br/>
+            <label for="title">podaj tytuł</label>
+            <input type="text" name="title" id="title" placeholder="">
+            <br />
+            <label for="name">imię autora</label>
+            <input type="text" name="name" id="name" placeholder="">
+            <br />
+            <label for="surname">nazwisko autora</label>
+            <input type="text" name="surname" id="surname" placeholder="">
+            <br />
+            {% csrf_token %}
+            <button class="btn mt-3">filtruj</button>
+            </form>
+        
+    </div>
+    
+    
+    <div class="table-wrapper" style="width: 1250px;">
+        <h2>Egzemplarze dostepne</h2>
+        <table class="fl-table">
+            <thead>
+            <tr>
+                <th>egzemplarz_id</th>
+                <th>ksiazka_id</th>
+                <th>tytul</th>
+                <th>isbn</th>
+                <th>jezyk</th>
+                <th>wydawca</th>
+                <th>imie_autora</th>
+                <th>nazwisko_autora</th>
+                <th>numer_alejki</th>
+                <th>numer_polki</th>
+                <th>pozycja_na_polce</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            {% for copy in list_of_available_copies %}
+            <tr>
+                <td>{{copy.egzemplarz_id}}</td>
+                <td>{{copy.ksiazka_id}}</td>
+                <td>{{copy.tytul}}</td>
+                <td>{{copy.isbn}}</td>
+                <td>{{copy.jezyk}}</td>
+                <td>{{copy.wydawca}}</td>
+                <td>{{copy.imie_autora}}</td>
+                <td>{{copy.nazwisko_autora}}</td>
+                <td>{{copy.numer_alejki}}</td>
+                <td>{{copy.numer_polki}}</td>
+                <td>{{copy.pozycja_na_polce}}</td>
+            </tr>    
+            {% endfor %}
+            <tbody>
+        </table>
+        
+    </div>
+    <div class="table-wrapper" style="width: 1250px;">
+        <h2>Egzemplarze niedostępne</h2>
+        <table class="fl-table">
+            <thead>
+            <tr>
+                <th>egzemplarz_id</th>
+                <th>ksiazka_id</th>
+                <th>tytul</th>
+                <th>isbn</th>
+                <th>jezyk</th>
+                <th>wydawca</th>
+                <th>imie_autora</th>
+                <th>nazwisko_autora</th>
+                <th>numer_alejki</th>
+                <th>numer_polki</th>
+                <th>pozycja_na_polce</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            {% for copy in list_of_borrowed_copies %}
+            <tr>
+                <td>{{copy.egzemplarz_id}}</td>
+                <td>{{copy.ksiazka_id}}</td>
+                <td>{{copy.tytul}}</td>
+                <td>{{copy.isbn}}</td>
+                <td>{{copy.jezyk}}</td>
+                <td>{{copy.wydawca}}</td>
+                <td>{{copy.imie_autora}}</td>
+                <td>{{copy.nazwisko_autora}}</td>
+                <td>{{copy.numer_alejki}}</td>
+                <td>{{copy.numer_polki}}</td>
+                <td>{{copy.pozycja_na_polce}}</td>
+            </tr>    
+            {% endfor %}
+            <tbody>
+        </table>
+        
+    </div>
+    
+</div>
+
+{% endblock %}

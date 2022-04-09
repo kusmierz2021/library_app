@@ -1,0 +1,70 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+{% block mainblock %}
+
+<link rel="stylesheet" href="{%static 'show_list.css' %}">
+
+
+<div class="table-wrapper">
+    <h2>pracownicy</h2>
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>konto_id</th>
+            <th>login</th>
+            <th>haslo</th>
+            <th>imie</th>
+            <th>nazwisko</th>
+            <th>email</th>
+            <th>numer_telefonu</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pracownik in list_of_pracownik %}
+        <tr>
+            <td>{{pracownik.konto_id}}</td>
+            <td>{{pracownik.login}}</td>
+            <td>{{pracownik.haslo}}</td>
+            <td>{{pracownik.imie}}</td>
+            <td>{{pracownik.nazwisko}}</td>
+            <td>{{pracownik.email}}</td>
+            <td>{{pracownik.numer_telefonu}}</td>
+        </tr>    
+        {% endfor %}
+        <tbody>
+    </table>
+    <h2>klienci</h2>
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>konto_id</th>
+            <th>login</th>
+            <th>haslo</th>
+            <th>imie</th>
+            <th>nazwisko</th>
+            <th>email</th>
+            <th>numer_telefonu</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for klient in list_of_klient %}
+        <tr>
+            <td>{{klient.konto_id}}</td>
+            <td>{{klient.login}}</td>
+            <td>{{klient.haslo}}</td>
+            <td>{{klient.imie}}</td>
+            <td>{{klient.nazwisko}}</td>
+            <td>{{klient.email}}</td>
+            <td>{{klient.numer_telefonu}}</td>
+        </tr>    
+        {% endfor %}
+        <tbody>
+    </table>
+    
+</div>
+
+    
+{% endblock %}

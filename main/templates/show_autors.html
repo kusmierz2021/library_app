@@ -1,0 +1,34 @@
+{% extends 'master_admin.html' %}
+
+{% load static %}
+
+
+
+
+{% block mainblock %}
+
+<link rel="stylesheet" href="{%static 'show_list.css' %}">
+<div class="table-wrapper">
+<h2>autorzy</h2>
+<table class="fl-table">
+    <thead>
+    <tr>
+        <th>autor_id</th>
+        <th>imie</th>
+        <th>nazwisko</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for autor in list_of_autors %}
+    <tr>
+        <td>{{autor.autor_id}}</td>
+        <td>{{autor.imie}}</td>
+        <td>{{autor.nazwisko}}</td>
+    </tr>    
+    {% endfor %}
+    <tbody>
+</table>
+</div>
+
+
+{% endblock %}
